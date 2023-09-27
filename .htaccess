@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+#redirect http to https
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# <FilesMatch ".(eot|ttf|otf|woff)">
+#     Header set Access-Control-Allow-Origin "*"
+#     Header set Access-Control-Allow-Origin "*"
+# </FilesMatch>
+
+Header set Access-Control-Allow-Origin "*"
